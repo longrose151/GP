@@ -150,13 +150,13 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <nav className="flex justify-between items-center bg-dark-blue py-4 shadow-lg px-8">
-        <img src={logo} alt="Grand Portfolios Logo" className="w-24 h-auto" /> {/* Logo added here */}
-        <div className="flex">
+      <nav className="flex flex-col md:flex-row justify-between items-center bg-dark-blue py-4 shadow-lg px-8 space-y-4 md:space-y-0">
+        <img src={logo} alt="Grand Portfolios Logo" className="w-24 h-auto" />
+        <div className="flex flex-wrap justify-center space-x-2">
           {tabs.map((tab) => (
             <button
               key={tab.name}
-              className={`text-light-beige hover:bg-beige hover:text-dark-blue font-bold py-2 px-4 rounded mx-2 ${
+              className={`text-light-beige hover:bg-beige hover:text-dark-blue font-bold py-2 px-4 rounded ${
                 activeTab === tab.name ? 'bg-beige text-dark-blue' : ''
               }`}
               onClick={() => setActiveTab(tab.name)}
