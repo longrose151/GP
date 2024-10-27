@@ -13,7 +13,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.contrib.auth import authenticate, get_user_model
 # Create your views here.
 
-logger = logging.getLogger('portfolio')
+logger = logging.getLogger(__name__)
 User = get_user_model()
 
 
