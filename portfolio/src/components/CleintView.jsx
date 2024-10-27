@@ -15,7 +15,6 @@ export default function ClientView() {
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    // Retrieve user name from session storage
     const name = sessionStorage.getItem('user_name');
     if (name) {
       setUserName(name);
@@ -23,7 +22,6 @@ export default function ClientView() {
   }, []);
 
   const handleLogout = () => {
-    // Clear session storage and navigate to homepage
     sessionStorage.clear();
     navigate('/');
   };
@@ -34,17 +32,16 @@ export default function ClientView() {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
   };
 
-  // Line chart data and options
   const lineChartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
     datasets: [
       {
         label: "Gold Price",
         data: goldPriceHistory,
-        borderColor: "#F4C46C", // beige color for line
-        backgroundColor: "rgba(244, 196, 108, 0.1)", // light beige fill
+        borderColor: "#F4C46C",
+        backgroundColor: "rgba(244, 196, 108, 0.1)",
         borderWidth: 2,
-        tension: 0.3, // curve the line slightly
+        tension: 0.3,
       },
     ],
   };
@@ -74,28 +71,27 @@ export default function ClientView() {
 
   return (
     <div className="min-h-screen bg-gray text-dark-blue font-sans">
-      {/* Header with Statement Summary, Withdrawals, and Logout Buttons */}
+      {/* Responsive Header */}
       <header className="bg-dark-blue text-white p-4">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto flex flex-col md:flex-row md:justify-between items-center space-y-4 md:space-y-0">
           <h1 className="text-2xl font-bold">Welcome, {userName}</h1>
-          <div className="flex space-x-4">
-            <button className="flex items-center text-sm px-4 py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
+          <div className="flex flex-wrap justify-center space-x-2 md:space-x-4">
+            <button className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
               Statement Summary
             </button>
-            <button className="flex items-center text-sm px-4 py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
+            <button className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
               Withdrawals
             </button>
-            <button onClick={handleLogout} className="flex items-center text-sm px-4 py-2 border border-white rounded hover:bg-blue">
-              <FaSignOutAlt className="mr-2 h-4 w-4" /> Logout
+            <button onClick={handleLogout} className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 border border-white rounded hover:bg-blue">
+              <FaSignOutAlt className="mr-1 md:mr-2 h-3 md:h-4 w-3 md:w-4" /> Logout
             </button>
           </div>
         </div>
       </header>
 
-      {/* Main content */}
       <main className="container mx-auto p-4 space-y-6">
         {/* Portfolio Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <div className="bg-white text-dark-blue p-4 rounded shadow border">
             <div className="flex items-center justify-between pb-2">
               <h2 className="text-sm font-medium">Total Portfolio Value</h2>
@@ -110,7 +106,7 @@ export default function ClientView() {
               <FaBars className="h-4 w-4 text-gray-400" />
             </div>
             <div className="text-2xl font-bold">{formatCurrency(goldAllocation)}</div>
-            <p className="text-xs text-gray-10">
+            <p className="text-xs text-gray-500">
               {((goldAllocation / portfolioValue) * 100).toFixed(2)}% of portfolio
             </p>
           </div>
@@ -121,7 +117,7 @@ export default function ClientView() {
               <span className="h-4 w-4 text-gray-400">$</span>
             </div>
             <div className="text-2xl font-bold">{formatCurrency(goldPrice)}</div>
-            <p className="text-xs text-gray-10">per troy ounce</p>
+            <p className="text-xs text-gray-500">per troy ounce</p>
           </div>
 
           <div className="bg-white text-dark-blue p-4 rounded shadow border">
@@ -139,11 +135,11 @@ export default function ClientView() {
           </div>
         </div>
 
-        {/* Gold Price Trend */}
+        {/* Gold Price Trend - Responsive */}
         <div className="bg-light-beige p-4 rounded shadow border flex justify-center">
-          <div>
+          <div className="w-full max-w-md">
             <h2 className="text-lg font-medium mb-4 text-center text-dark-blue">Gold Price Trend</h2>
-            <div className="w-[500px] h-64 mx-auto"> {/* Adjust width as needed */}
+            <div className="h-64">
               <Line data={lineChartData} options={lineChartOptions} />
             </div>
           </div>
