@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-nf-_srar&#=e=^1x%9omil-^n-5%l*xnou7yxn54$&xspc#%wf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gp-x5v4.onrender.com']
+ALLOWED_HOSTS = ['gp-x5v4.onrender.com', '127.0.0.1']
 
-CORS_ALLOWED_ORIGINS = ['https://grand-portfolio.onrender.com/']
+CORS_ALLOWED_ORIGINS = ['https://grand-portfolio.onrender.com', 'http://localhost:4000']
 
 
 

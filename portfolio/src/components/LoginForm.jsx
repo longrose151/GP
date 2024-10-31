@@ -1,4 +1,3 @@
-// LoginForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
@@ -18,21 +17,25 @@ function LoginForm() {
     setError('');
     setLoading(true);
 
-    try {
-      // Send a POST request to your login endpoint
-      const response = await api.post('/login/', { username, password });
+    // Trim whitespace before submission
+    const trimmedUsername = username.trim();
+    const trimmedPassword = password.trim();
 
-      // Store the tokens and user details in sessionStorage
+    try {
+      const response = await api.post('/login/', { 
+        username: trimmedUsername, 
+        password: trimmedPassword 
+      });
+
       const accessToken = response.data.access;
       const refreshToken = response.data.refresh;
       const userType = response.data.user_type;
-      const userName = response.data.user_name; // Assume the user name is returned in the response
+      const userName = response.data.user_name;
       sessionStorage.setItem('access_token', accessToken);
       sessionStorage.setItem('refresh_token', refreshToken);
       sessionStorage.setItem('user_type', userType);
-      sessionStorage.setItem('user_name', userName); // Store user name in sessionStorage
+      sessionStorage.setItem('user_name', userName);
 
-      // Check if the access token exists before navigation
       if (sessionStorage.getItem('access_token')) {
         if (userType === '1') {
           navigate('/admin');
@@ -56,6 +59,10 @@ function LoginForm() {
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleTrimInput = (setter) => (e) => {
+    setter(e.target.value.trim());
   };
 
   return (
@@ -84,6 +91,7 @@ function LoginForm() {
                 placeholder="Username or Email"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                onBlur={handleTrimInput(setUsername)} // Trim on blur
               />
               <div className="relative mt-4">
                 <input
@@ -96,6 +104,7 @@ function LoginForm() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onBlur={handleTrimInput(setPassword)} // Trim on blur
                 />
                 <button
                   type="button"

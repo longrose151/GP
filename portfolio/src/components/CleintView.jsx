@@ -3,16 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { FaArrowUp, FaArrowDown, FaSignOutAlt, FaChartLine, FaBars } from 'react-icons/fa';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import Withdrawal from './Withdrawal';
 
 // Register chart.js modules
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default function ClientView() {
   const navigate = useNavigate();
-  const [portfolioValue, setPortfolioValue] = useState(250000);
-  const [goldAllocation, setGoldAllocation] = useState(75000);
+  const [portfolioValue, setPortfolioValue] = useState(2306000);
+  const [goldAllocation, setGoldAllocation] = useState(2000000);
   const [goldPrice, setGoldPrice] = useState(1800);
   const [userName, setUserName] = useState('');
+  const [showWithdrawalModal, setShowWithdrawalModal] = useState(false);
 
   useEffect(() => {
     const name = sessionStorage.getItem('user_name');
@@ -25,6 +27,8 @@ export default function ClientView() {
     sessionStorage.clear();
     navigate('/');
   };
+
+  const toggleWithdrawalModal = () => setShowWithdrawalModal(!showWithdrawalModal);
 
   const goldPriceHistory = [1750, 1780, 1790, 1800, 1820, 1810, 1800, 1730, 1799, 1803];
 
@@ -79,7 +83,7 @@ export default function ClientView() {
             <button className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
               Statement Summary
             </button>
-            <button className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
+            <button onClick={toggleWithdrawalModal} className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 bg-beige text-dark-blue font-bold rounded hover:bg-light-beige">
               Withdrawals
             </button>
             <button onClick={handleLogout} className="flex items-center text-xs md:text-sm px-3 py-1 md:px-4 md:py-2 border border-white rounded hover:bg-blue">
@@ -180,6 +184,20 @@ export default function ClientView() {
             Invest Now
           </button>
         </div>
+
+        {showWithdrawalModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
+          <div className="bg-white rounded-lg p-6 w-full max-w-lg md:p-8 shadow-lg text-dark-blue relative">
+            <button
+              onClick={toggleWithdrawalModal}
+              className="absolute top-4 right-4 text-gray-500 font-bold hover:text-red-500"
+            >
+              X
+            </button>
+            <Withdrawal /> {/* Render the Withdrawal component here */}
+          </div>
+        </div>
+      )}
       </main>
     </div>
   );

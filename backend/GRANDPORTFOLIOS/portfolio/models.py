@@ -56,3 +56,19 @@ class User(AbstractUser):
         if self.password and not self.password.startswith('pbkdf2_sha256$'):
             self.password = make_password(self.password)
         super().save(*args, **kwargs)
+
+
+class Withdrawal(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('completed', 'Completed')])
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class UserSubscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    stage = models.IntegerField(default=1)
+    receipt = models.FileField(upload_to='receipts/', null=True, blank=True)
+    is_processing = models.BooleanField(default=False)
+    is_completed = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
