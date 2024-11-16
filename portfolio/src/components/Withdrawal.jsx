@@ -15,7 +15,7 @@ export default function Withdrawal({ toggleWithdrawalModal }) {
   const [infoMessage, setInfoMessage] = useState('');
 
   const stages = [
-    { stage: 1, amount: 2000 },
+    { stage: 1, amount: 1000 },
     { stage: 2, amount: 1500 },
     { stage: 3, amount: 2000 },
     { stage: 4, amount: 5000 },
@@ -125,7 +125,7 @@ export default function Withdrawal({ toggleWithdrawalModal }) {
           <h2 className="text-lg md:text-xl font-bold mb-2">Pending Withdrawals</h2>
         </div>
       ) : (
-        <p className="mb-4 text-sm md:text-base">No pending withdrawals. Please initiate a new request.</p>
+        <p className="mb-4 text-sm md:text-base text-red-500">You're unable to make withdrawals at the moment due to pending subscription fees.</p>
       )}
 
       {!qualified ? (

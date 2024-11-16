@@ -30,14 +30,14 @@ export default function ClientView() {
 
   const toggleWithdrawalModal = () => setShowWithdrawalModal(!showWithdrawalModal);
 
-  const goldPriceHistory = [1750, 1780, 1790, 1800, 1820, 1810, 1800, 1730, 1799, 1803];
+  const goldPriceHistory = [1750, 1780, 1790, 1800, 1820, 1810, 1800, 1730, 1799, 1803, 1709];
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
   };
 
   const lineChartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
+    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"],
     datasets: [
       {
         label: "Gold Price",

@@ -139,8 +139,8 @@ function HomePage() {
             </button>
           </form>
           <p className="text-dark-blue text-lg mt-4">
-            Address: Greenwood Gearhart 26 East Center Street Fayetteville, Arkansas 72701<br />
-            Phone: (415) 534-6876<br />
+            Address: Eric Abang Amewuda Street, Adjiringano, East Legon, Accra<br />
+            Phone: (233) 634-6876<br />
             Office Hours: Monday - Friday, 9 AM - 6 PM
           </p>
         </div>
