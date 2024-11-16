@@ -160,7 +160,7 @@ export default function ClientView() {
               </div>
               <div className="text-right">
                 <p className="font-medium text-green-500">+$550,000</p>
-                <p className="text-sm text-gray">2.78 oz</p>
+                <p className="text-sm text-gray">200.78 oz</p>
               </div>
             </div>
             <div className="flex justify-between items-center">
@@ -170,7 +170,7 @@ export default function ClientView() {
               </div>
               <div className="text-right">
                 <p className="font-medium text-red-500">-$300,500</p>
-                <p className="text-sm text-gray">1.94 oz</p>
+                <p className="text-sm text-gray">150.94 oz</p>
               </div>
             </div>
           </div>
