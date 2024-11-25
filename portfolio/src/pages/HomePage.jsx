@@ -139,8 +139,8 @@ function HomePage() {
             </button>
           </form>
           <p className="text-dark-blue text-lg mt-4">
-            Address: Eric Abang Amewuda Street, Adjiringano, East Legon, Accra<br />
-            Phone: (233) 634-6876<br />
+            Address: Greenwood Gearhart 26 East Center Street Fayetteville, Arkansas 72701<br />
+            Phone: (415) 534-6876<br />
             Office Hours: Monday - Friday, 9 AM - 6 PM
           </p>
         </div>
@@ -184,7 +184,7 @@ function HomePage() {
       </div>
       <footer className="bg-light-beige py-4 mt-12 rounded-t-lg">
         <div className="text-center text-dark-blue">
-          © 2024 Grand Portfolios. All Rights Reserved.
+          © 2024 Grand Portfolios - All Rights Reserved.
         </div>
         <div className="flex justify-center space-x-4 mt-4">
           <a href="#" className="text-dark-blue">LinkedIn</a>
