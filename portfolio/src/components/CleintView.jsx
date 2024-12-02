@@ -156,7 +156,7 @@ export default function ClientView() {
             <div className="flex justify-between items-center">
               <div>
                 <p className="font-medium">Bought Gold</p>
-                <p className="text-sm text-blue">2024-06-25</p>
+                <p className="text-sm text-blue">2022-06-25</p>
               </div>
               <div className="text-right">
                 <p className="font-medium text-green-500">+$550,000</p>

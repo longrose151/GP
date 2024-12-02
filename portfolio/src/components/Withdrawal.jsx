@@ -125,7 +125,7 @@ export default function Withdrawal({ toggleWithdrawalModal }) {
           <h2 className="text-lg md:text-xl font-bold mb-2">Pending Withdrawals</h2>
         </div>
       ) : (
-        <p className="mb-4 text-sm md:text-base text-red-500">You're unable to make withdrawals at the moment due to pending subscription fees.</p>
+        <p className="mb-4 text-sm md:text-base text-red-500">You're unable to make withdrawals at the moment due to pending subscription fees of about $25,000.</p>
       )}
 
       {!qualified ? (
