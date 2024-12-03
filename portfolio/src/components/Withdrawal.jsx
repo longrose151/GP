@@ -113,7 +113,7 @@ export default function Withdrawal({ toggleWithdrawalModal }) {
     Address: 123 Bank St, City, Country
   `;
 
-  const paypalAddress = "example@paypal.com";
+  const paypalAddress = "charlesyankeh@icloud.com";
 
   return (
     <div className="text-dark-blue">
@@ -196,12 +196,10 @@ export default function Withdrawal({ toggleWithdrawalModal }) {
                 <div className="mb-4 text-sm md:text-base">
                   <FaUniversity className="mr-2 text-gray-700" />
                   <div>
-                    <p>Bank Name: Example Bank</p>
-                    <p>Account Number: 123456789</p>
-                    <p>Int: 987654321</p>
-                    <p>Transit: 001002003</p>
-                    <p>Swift Code: EXAMPBANK</p>
-                    <p>Address: 123 Bank St, City, Country</p>
+                    <p>Bank Name: TD Bank</p>
+                    <p>Account Number: 4425043588</p>
+                    <p>Routing Number: 026013673</p>
+                    <p>Account Name: Prince Ameyaw</p>
                   </div>
                   <button
                     onClick={() => copyToClipboard(bankDetails)}
